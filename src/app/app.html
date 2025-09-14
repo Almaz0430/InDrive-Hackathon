@@ -1,5 +1,276 @@
 <div class="app-container">
-    <main class="main-content">
-        <router-outlet />
-    </main>
+    <!-- AI Neural Network Background -->
+    <div class="neural-bg"></div>
+
+    <!-- Header -->
+    <header class="premium-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo-section-link">
+                    <div class="logo-section">
+                        <div class="logo">inDrive</div>
+                        <div class="logo-subtitle">AI Vision</div>
+                    </div>
+                </a>
+                <nav class="main-nav">
+                    <a href="#demo" class="nav-link">Демо</a>
+                    <a href="#how-it-works" class="nav-link">Преимущества</a>
+                    <a href="#about" class="nav-link">Для inDrive</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        Определение состояния<br>
+                        <span class="gradient-text">автомобиля по фото</span>
+                    </h1>
+                    <p class="hero-description">
+                        AI-решение для платформы inDrive. Технология мгновенного анализа состояния автомобилей по фото 
+                        для повышения безопасности и доверия пользователей.
+                    </p>
+                    <div class="hero-actions">
+                        <button class="btn-primary hero-btn">
+                            <span>Протестировать решение</span>
+                            <div class="btn-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                    <polyline points="12,5 19,12 12,19" />
+                                </svg>
+                            </div>
+                        </button>
+                        <button class="btn-secondary">
+                            <span>Узнать о внедрении</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="ai-demo-card">
+                        <div class="demo-upload-area">
+                            <div class="upload-icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
+                                    <circle cx="12" cy="13" r="3" />
+                                </svg>
+                            </div>
+                            <div class="upload-text">Загрузите фото автомобиля</div>
+                        </div>
+                        <div class="demo-analysis">
+                            <div class="analysis-item">
+                                <div class="status-icon clean">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20,6 9,17 4,12" />
+                                    </svg>
+                                </div>
+                                <span>Чистый</span>
+                            </div>
+                            <div class="analysis-item">
+                                <div class="status-icon intact">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M9 12l2 2 4-4" />
+                                        <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3" />
+                                        <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3" />
+                                        <path d="M12 3c0 1-1 3-3 3s-3-2-3-3 1-3 3-3 3 2 3 3" />
+                                        <path d="M12 21c0-1 1-3 3-3s3 2 3 3-1 3-3 3-3-2-3-3" />
+                                    </svg>
+                                </div>
+                                <span>Не битый</span>
+                            </div>
+                            <div class="analysis-item">
+                                <div class="status-icon confidence">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M9 11H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-4" />
+                                        <polyline points="9,11 12,14 15,11" />
+                                        <line x1="12" y1="2" x2="12" y2="14" />
+                                    </svg>
+                                </div>
+                                <span>95% точность</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Технические характеристики</h2>
+                <p class="section-subtitle">
+                    Основные параметры и возможности системы
+                </p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h4a2 2 0 0 1 2 2v1.28c.6.35 1 .98 1 1.72 0 .74-.4 1.38-1 1.72V15a2 2 0 0 1-2 2h-4v1.27c.6.35 1 .98 1 1.73a2 2 0 1 1-4 0c0-.75.4-1.38 1-1.73V17H7a2 2 0 0 1-2-2v-1.28c-.6-.35-1-.98-1-1.72 0-.74.4-1.37 1-1.72V9a2 2 0 0 1 2-2h4V5.73c-.6-.35-1-.99-1-1.73a2 2 0 0 1 2-2Z" />
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Нейросеть</h3>
+                    <p class="feature-description">
+                        Модель обучена на 15,000 изображений автомобилей
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13,2 3,14 12,14 11,22 21,10 12,10" />
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">REST API</h3>
+                    <p class="feature-description">
+                        Простая интеграция через HTTP запросы
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <circle cx="12" cy="12" r="6" />
+                            <circle cx="12" cy="12" r="2" />
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Точность 87%</h3>
+                    <p class="feature-description">
+                        Определение основных повреждений и загрязнений
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="demo-section" id="demo">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Тестирование модели</h2>
+                <p class="section-subtitle">
+                    Загрузите фото автомобиля для проверки работы алгоритма
+                </p>
+            </div>
+            <div class="demo-content">
+                <router-outlet />
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">Решение для inDrive</h2>
+                    <p class="about-description">
+                        Система автоматического анализа состояния автомобилей по фотографии. 
+                        Определяет видимые повреждения, загрязнения и общее состояние. 
+                        Может быть интегрирована в существующие мобильные приложения 
+                        через REST API.
+                    </p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M9 11H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-4" />
+                                    <polyline points="9,11 12,14 15,11" />
+                                    <line x1="12" y1="2" x2="12" y2="14" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Время обработки</h4>
+                                <p>Анализ одного изображения за 2-4 секунды</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <polyline points="12,6 12,12 16,14" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Поддерживаемые форматы</h4>
+                                <p>JPEG, PNG изображения до 10MB</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Производительность</h4>
+                                <p>До 100 запросов в минуту на сервер</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="tech-showcase">
+                        <div class="tech-item">
+                            <div class="tech-label">Точность определения повреждений</div>
+                            <div class="tech-bar">
+                                <div class="tech-progress" style="width: 87%"></div>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-label">Точность определения чистоты</div>
+                            <div class="tech-bar">
+                                <div class="tech-progress" style="width: 92%"></div>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-label">Стабильность API</div>
+                            <div class="tech-bar">
+                                <div class="tech-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="premium-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">AI Vision</div>
+                    <p>Инновационные решения для inDrive</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Техническая документация</a>
+                    <a href="#" class="footer-link">API интеграция</a>
+                    <a href="#" class="footer-link">Связаться с нами</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Navigation Script -->
+    <script src="./navigation.js"></script>
 </div>

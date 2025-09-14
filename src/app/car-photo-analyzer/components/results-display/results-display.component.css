@@ -10,10 +10,11 @@
   justify-content: center;
   align-items: center;
   padding: 4rem 2rem;
-  background: white;
+  background: var(--surface-color);
   border-radius: 12px;
   box-shadow: var(--shadow-light);
   border: 1px solid var(--border-color);
+  backdrop-filter: blur(10px);
 }
 
 .loading-content {
@@ -47,11 +48,12 @@
 
 /* Results Content */
 .results-content {
-  background: white;
+  background: var(--surface-color);
   border-radius: 12px;
   box-shadow: var(--shadow-light);
   border: 1px solid var(--border-color);
   overflow: hidden;
+  backdrop-filter: blur(10px);
 }
 
 .results-header {
@@ -235,7 +237,7 @@
   padding: 2rem;
   text-align: center;
   border-top: 1px solid var(--border-color);
-  background: white;
+  background: var(--surface-color);
 }
 
 .secondary-button {

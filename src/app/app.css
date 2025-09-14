@@ -1,9 +1,59 @@
-/* Стили для основного компонента приложения */
+/* Premium inDrive AI Website Styles */
+@import './premium-styles.css';
+
 .app-container {
   min-height: 100vh;
-  background-color: var(--background-primary);
+  background: #ffffff;
+  position: relative;
+  overflow-x: hidden;
 }
 
+/* AI Neural Network Background */
+.neural-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 15% 25%, rgba(0, 200, 81, 0.03) 0%, transparent 40%),
+    radial-gradient(circle at 85% 75%, rgba(0, 200, 81, 0.02) 0%, transparent 35%),
+    linear-gradient(135deg, rgba(0, 200, 81, 0.01) 0%, transparent 50%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.neural-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(90deg, rgba(0, 200, 81, 0.05) 1px, transparent 1px),
+    linear-gradient(rgba(0, 200, 81, 0.05) 1px, transparent 1px);
+  background-size: 100px 100px;
+  opacity: 0.1;
+  animation: neuralPulse 20s ease-in-out infinite;
+}
+
+@keyframes neuralPulse {
+
+  0%,
+  100% {
+    opacity: 0.05;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.1;
+    transform: scale(1.01);
+  }
+}
+
+/* Main Content Wrapper */
 .main-content {
-  padding: var(--spacing-lg) 0;
+  position: relative;
+  z-index: 1;
 }

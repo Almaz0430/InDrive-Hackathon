@@ -1,5 +1,5 @@
 /* Глобальные стили для приложения совместных поездок */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 /* CSS Reset и базовые стили */
 * {
@@ -9,16 +9,129 @@
 html, body {
   margin: 0;
   padding: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #ffffff;
+  background: #ffffff;
   color: #1a1a1a;
   line-height: 1.6;
+  position: relative;
+  overflow-x: hidden;
+  font-weight: 400;
 }
 
 body {
   min-height: 100vh;
+}
+
+/* Зеленые блики на фоне */
+body::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(0, 200, 81, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(0, 200, 81, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 40% 80%, rgba(0, 200, 81, 0.10) 0%, transparent 35%),
+    radial-gradient(circle at 90% 20%, rgba(0, 200, 81, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 60% 10%, rgba(0, 200, 81, 0.06) 0%, transparent 30%);
+  animation: floatingGlow 20s ease-in-out infinite;
+  z-index: -2;
+}
+
+/* Иконки машин на фоне */
+body::after {
+  content: '🚗 🚙 🚕 🚐 🚗 🚙 🚕 🚐 🚗 🚙 🚕 🚐 🚗 🚙 🚕 🚐 🚗 🚙 🚕 🚐 🚗 🚙 🚕 🚐 🚗 🚙 🚕 🚐';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 32px;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1rem;
+  animation: carFloat 30s linear infinite;
+  line-height: 1.5;
+}
+
+@keyframes floatingGlow {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(-20px, -20px) rotate(1deg);
+  }
+  50% {
+    transform: translate(20px, -10px) rotate(-1deg);
+  }
+  75% {
+    transform: translate(-10px, 20px) rotate(0.5deg);
+  }
+}
+
+@keyframes carFloat {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-5px) rotate(-1deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+/* Дополнительные зеленые акценты */
+.container::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  right: 5%;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(0, 200, 81, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: pulse 4s ease-in-out infinite;
+  z-index: -1;
+}
+
+.container::after {
+  content: '';
+  position: absolute;
+  bottom: 15%;
+  left: 8%;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(0, 200, 81, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: pulse 6s ease-in-out infinite reverse;
+  z-index: -1;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.4;
+  }
 }
 
 /* CSS переменные для дизайн-системы */
@@ -31,12 +144,12 @@ body {
   
   /* Фоновые цвета */
   --background-primary: #ffffff;
-  --background-secondary: #f8f9fa;
-  --background-light: #fafbfc;
+  --background-secondary: rgba(248, 249, 250, 0.9);
+  --background-light: rgba(250, 251, 252, 0.8);
   
   /* Цвета поверхностей */
-  --surface-color: #ffffff;
-  --surface-elevated: #ffffff;
+  --surface-color: rgba(255, 255, 255, 0.95);
+  --surface-elevated: rgba(255, 255, 255, 0.98);
   
   /* Границы и разделители */
   --border-color: #e1e5e9;
@@ -80,8 +193,9 @@ body {
   --transition-normal: 0.25s ease-out;
   --transition-slow: 0.35s ease-out;
   
-  /* Шрифт */
-  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  /* Шрифты */
+  --font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
 }
 
 /* Базовые компоненты */
@@ -103,6 +217,7 @@ body {
   transition: all var(--transition-fast);
   user-select: none;
   white-space: nowrap;
+  letter-spacing: 0.025em;
 }
 
 .btn:disabled {
@@ -159,7 +274,21 @@ body {
   border-radius: var(--radius-lg);
   padding: var(--spacing-lg);
   box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(10px);
   transition: all var(--transition-normal);
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 200, 81, 0.02) 0%, transparent 50%);
+  border-radius: var(--radius-lg);
+  pointer-events: none;
 }
 
 .card:hover {
@@ -222,36 +351,57 @@ body {
 .text-xs {
   font-size: 12px;
   line-height: 1.4;
+  font-weight: 400;
 }
 
 .text-sm {
   font-size: 14px;
   line-height: 1.5;
+  font-weight: 400;
 }
 
 .text-base {
   font-size: 16px;
   line-height: 1.6;
+  font-weight: 400;
 }
 
 .text-lg {
   font-size: 18px;
   line-height: 1.6;
+  font-weight: 400;
 }
 
 .text-xl {
   font-size: 20px;
   line-height: 1.5;
+  font-weight: 500;
 }
 
 .text-2xl {
   font-size: 24px;
   line-height: 1.4;
+  font-weight: 500;
 }
 
 .text-3xl {
   font-size: 30px;
   line-height: 1.3;
+  font-weight: 600;
+}
+
+.text-4xl {
+  font-size: 36px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.font-light {
+  font-weight: 300;
+}
+
+.font-normal {
+  font-weight: 400;
 }
 
 .font-medium {
@@ -264,6 +414,10 @@ body {
 
 .font-bold {
   font-weight: 700;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
 }
 
 .text-primary {
@@ -295,6 +449,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--spacing-md);
+  position: relative;
 }
 
 .flex {
@@ -386,6 +541,7 @@ body {
   font-family: var(--font-family);
   font-size: 14px;
   background-color: var(--surface-color);
+  backdrop-filter: blur(10px);
   transition: all var(--transition-fast);
 }
 
@@ -476,4 +632,75 @@ body {
 .focus-visible:focus-visible {
   outline: 2px solid var(--accent-color);
   outline-offset: 2px;
+}/* Совреме
+нные заголовки с Poppins */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+  letter-spacing: -0.025em;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+h5 {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+h6 {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Улучшенная читаемость для параграфов */
+p {
+  font-family: var(--font-family);
+  font-weight: 400;
+  line-height: 1.7;
+  margin: 0 0 1rem 0;
+}
+
+/* Стили для кода и технических элементов */
+code, pre {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+}
+
+/* Адаптивная типографика */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  h3 {
+    font-size: 1.375rem;
+  }
 }

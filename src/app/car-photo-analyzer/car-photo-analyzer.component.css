@@ -2,8 +2,9 @@
 :host {
   display: block;
   font-family: var(--font-family);
-  background-color: var(--background-primary);
+  background: transparent;
   min-height: 100vh;
+  position: relative;
 }
 
 /* Основной контейнер */
@@ -12,7 +13,9 @@
   width: 100%;
   margin: 0 auto;
   padding: var(--spacing-2xl) var(--spacing-md);
-  background-color: var(--background-primary);
+  background: transparent;
+  position: relative;
+  z-index: 1;
 }
 
 /* Отображение ошибок */
