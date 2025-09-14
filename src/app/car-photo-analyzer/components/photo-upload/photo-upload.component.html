@@ -1,0 +1,90 @@
+<div class="upload-container">
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <h1 class="hero-title">
+      Анализ <span class="accent-text">фото</span> автомобилей
+    </h1>
+    <p class="hero-subtitle">
+      Загрузите фото → нажмите кнопку → получите результат
+    </p>
+  </div>
+
+  <!-- Upload Zone -->
+  <div 
+    class="upload-zone"
+    [class.drag-active]="isDragActive"
+    [class.disabled]="disabled"
+    [class.processing]="isProcessing"
+    (dragover)="onDragOver($event)"
+    (dragleave)="onDragLeave($event)"
+    (drop)="onDrop($event)"
+    (click)="onUploadButtonClick()"
+  >
+    <div class="upload-content">
+      <!-- Upload Icon -->
+      <div class="upload-icon">
+        <ng-container *ngIf="!isProcessing">📷</ng-container>
+        <ng-container *ngIf="isProcessing">
+          <div class="loading-spinner"></div>
+        </ng-container>
+      </div>
+
+      <!-- Upload Text -->
+      <div class="upload-text">
+        <ng-container *ngIf="!isProcessing">
+          <h3 class="upload-title">
+            <ng-container *ngIf="!isDragActive">Перетащите фото сюда</ng-container>
+            <ng-container *ngIf="isDragActive">Отпустите для загрузки</ng-container>
+          </h3>
+          <p class="upload-subtitle">
+            или <span class="upload-link">выберите файл</span>
+          </p>
+        </ng-container>
+        
+        <ng-container *ngIf="isProcessing">
+          <h3 class="upload-title">Обработка файла...</h3>
+          <p class="upload-subtitle">Пожалуйста, подождите</p>
+        </ng-container>
+      </div>
+
+      <!-- File Requirements -->
+      <div class="file-requirements" *ngIf="!isProcessing">
+        <p class="requirement-text">
+          Поддерживаемые форматы: {{ getAllowedTypesText() }}
+        </p>
+        <p class="requirement-text">
+          Максимальный размер: {{ getMaxFileSizeFormatted() }}
+        </p>
+      </div>
+    </div>
+
+    <!-- Hidden File Input -->
+    <input
+      type="file"
+      id="fileInput"
+      class="file-input"
+      accept=".jpg,.jpeg,.png"
+      (change)="onFileSelected($event)"
+      [disabled]="disabled || isProcessing"
+    />
+  </div>
+
+  <!-- Upload Button -->
+  <div class="button-container">
+    <button 
+      class="primary-button upload-button"
+      (click)="onUploadButtonClick()"
+      [disabled]="disabled || isProcessing"
+      type="button"
+    >
+      <ng-container *ngIf="!isProcessing">
+        <span class="button-icon">📁</span>
+        Загрузить фото
+      </ng-container>
+      <ng-container *ngIf="isProcessing">
+        <div class="button-spinner"></div>
+        Обработка...
+      </ng-container>
+    </button>
+  </div>
+</div>

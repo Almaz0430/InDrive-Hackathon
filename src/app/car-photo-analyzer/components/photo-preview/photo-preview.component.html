@@ -1,0 +1,70 @@
+<div class="preview-container" *ngIf="hasPhoto()">
+  <div class="preview-header">
+    <h3 class="section-title">Предпросмотр фото</h3>
+    <div class="preview-actions" *ngIf="!isAnalyzing">
+      <button 
+        class="action-button replace-button" 
+        (click)="onReplacePhoto()"
+        type="button"
+        title="Заменить фото"
+      >
+        <span class="button-icon">🔄</span>
+        Заменить
+      </button>
+      <button 
+        class="action-button remove-button" 
+        (click)="onRemovePhoto()"
+        type="button"
+        title="Удалить фото"
+      >
+        <span class="button-icon">🗑️</span>
+        Удалить
+      </button>
+    </div>
+  </div>
+
+  <div class="photo-preview" [class.analyzing]="isAnalyzing">
+    <!-- Image Container -->
+    <div class="image-container">
+      <img 
+        [src]="uploadedFile!.previewUrl" 
+        [alt]="uploadedFile!.file.name"
+        class="preview-image"
+        loading="lazy"
+      />
+      
+      <!-- Analysis Overlay -->
+      <div class="analysis-overlay" *ngIf="isAnalyzing">
+        <div class="analysis-content">
+          <div class="analysis-spinner"></div>
+          <p class="analysis-text">Анализируем...</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Photo Info -->
+    <div class="photo-info">
+      <div class="file-details">
+        <div class="file-name">
+          <span class="file-icon">📷</span>
+          <span class="name-text">{{ uploadedFile!.file.name }}</span>
+        </div>
+        
+        <div class="file-meta">
+          <div class="meta-item">
+            <span class="meta-label">Размер:</span>
+            <span class="meta-value">{{ formatFileSize(uploadedFile!.file.size) }}</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Тип:</span>
+            <span class="meta-value">{{ getFileExtension(uploadedFile!.file.name) }}</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Загружено:</span>
+            <span class="meta-value">{{ formatUploadTime(uploadedFile!.uploadTimestamp) }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

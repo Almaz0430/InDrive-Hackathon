@@ -1,0 +1,276 @@
+/* Import Inter font for modern typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+
+/* CSS Variables - dario.io style */
+:host {
+  /* Primary colors - minimalist palette */
+  --primary-color: #111111;
+  --accent-color: #00b894; /* bright green accent */
+  --secondary-color: #333333;
+  
+  /* Result colors */
+  --success-color: #00b894; /* same green for consistency */
+  --error-color: #e74c3c;
+  --warning-color: #f39c12;
+  
+  /* Neutral colors - lots of white space */
+  --background-color: #ffffff;
+  --surface-color: #ffffff;
+  --border-color: #e8e8e8;
+  --text-primary: #111111;
+  --text-secondary: #666666;
+  --text-light: #999999;
+  
+  /* Shadows and effects */
+  --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+  
+  /* Font */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  
+  display: block;
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  min-height: 100vh;
+}
+
+/* App Container */
+.car-analyzer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Error Display */
+.error-container {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  animation: slideInRight 0.3s ease-out;
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  background-color: var(--error-color);
+  color: white;
+  border-radius: 8px;
+  box-shadow: var(--shadow-medium);
+  font-weight: 600;
+  max-width: 400px;
+}
+
+.error-icon {
+  font-size: 1.25rem;
+}
+
+.error-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  margin-left: auto;
+  line-height: 1;
+}
+
+.error-close:hover {
+  opacity: 0.8;
+}
+
+/* Analysis Section */
+.analysis-section {
+  margin-top: 3rem;
+  padding: 2rem 0;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Preview Container */
+.preview-container {
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin: 0 0 1.5rem 0;
+  text-align: center;
+}
+
+.photo-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--border-color);
+}
+
+.preview-image {
+  max-width: 100%;
+  max-height: 400px;
+  width: auto;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: var(--shadow-light);
+}
+
+.photo-info {
+  text-align: center;
+}
+
+.photo-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 0.25rem 0;
+  word-break: break-word;
+}
+
+.photo-size {
+  font-size: 0.875rem;
+  color: var(--text-light);
+  margin: 0;
+}
+
+/* Analysis Controls */
+.analysis-controls {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2.5rem;
+  background-color: var(--accent-color);
+  color: white;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 1.125rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-light);
+  text-decoration: none;
+  min-height: 3.5rem;
+}
+
+.primary-button:hover:not(:disabled) {
+  background-color: #019875;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.primary-button:disabled {
+  background-color: var(--text-light);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.button-icon {
+  font-size: 1.25rem;
+}
+
+.button-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.analysis-button {
+  font-size: 1.25rem;
+  padding: 1.25rem 3rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .car-analyzer-container {
+    padding: 1rem;
+  }
+  
+  .error-container {
+    top: 1rem;
+    right: 1rem;
+    left: 1rem;
+  }
+  
+  .error-message {
+    max-width: none;
+  }
+  
+  .photo-preview {
+    padding: 1.5rem;
+  }
+  
+  .preview-image {
+    max-height: 300px;
+  }
+  
+  .analysis-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .car-analyzer-container {
+    padding: 0.5rem;
+  }
+  
+  .photo-preview {
+    padding: 1rem;
+  }
+  
+  .preview-image {
+    max-height: 250px;
+  }
+  
+  .primary-button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+}

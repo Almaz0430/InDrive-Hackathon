@@ -1,0 +1,47 @@
+<div class="car-analyzer-container">
+  <!-- Error Display -->
+  <div class="error-container" *ngIf="state.error">
+    <div class="error-message">
+      <span class="error-icon">⚠️</span>
+      {{ state.error }}
+      <button class="error-close" (click)="clearError()" type="button">×</button>
+    </div>
+  </div>
+
+  <!-- Photo Upload Component -->
+  <app-photo-upload
+    [disabled]="state.isAnalyzing"
+    (fileUploaded)="onFileUploaded($event)"
+    (uploadError)="onUploadError($event)"
+  ></app-photo-upload>
+
+  <!-- Photo Preview Component -->
+  <app-photo-preview
+    *ngIf="hasUploadedFile()"
+    [uploadedFile]="state.uploadedFile"
+    [isAnalyzing]="state.isAnalyzing"
+    (removePhoto)="onRemovePhoto()"
+    (replacePhoto)="onReplacePhoto()"
+  ></app-photo-preview>
+
+  <!-- Analysis Button -->
+  <div class="analysis-controls" *ngIf="hasUploadedFile()">
+    <button 
+      class="primary-button analysis-button" 
+      [disabled]="!canStartAnalysis()"
+      (click)="onStartAnalysis()"
+      type="button"
+    >
+      <span class="button-icon" *ngIf="!state.isAnalyzing">🔍</span>
+      <div class="button-spinner" *ngIf="state.isAnalyzing"></div>
+      {{ state.isAnalyzing ? 'Проверка...' : 'Проверить состояние' }}
+    </button>
+  </div>
+
+  <!-- Results Display Component -->
+  <app-results-display
+    [result]="state.analysisResult"
+    [isAnalyzing]="state.isAnalyzing"
+    (reset)="onReset()"
+  ></app-results-display>
+</div>

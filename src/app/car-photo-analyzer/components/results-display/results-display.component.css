@@ -1,0 +1,347 @@
+/* Results Container */
+.results-container {
+  margin-top: 2rem;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Loading State */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--border-color);
+}
+
+.loading-content {
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid var(--border-color);
+  border-top: 4px solid var(--accent-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1.5rem auto;
+}
+
+.loading-title {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem 0;
+}
+
+.loading-subtitle {
+  font-family: var(--font-family);
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Results Content */
+.results-content {
+  background: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+.results-header {
+  padding: 2rem 2rem 1rem 2rem;
+  border-bottom: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.section-title {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem 0;
+}
+
+.analysis-time {
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  color: var(--text-light);
+  margin: 0;
+}
+
+/* Results Grid */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.result-card {
+  padding: 2rem;
+  border-right: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.result-card:last-child {
+  border-right: none;
+}
+
+.result-card:hover {
+  background-color: #fafafa;
+}
+
+/* Result Header */
+.result-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.result-icon {
+  font-size: 2.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.result-info {
+  flex: 1;
+}
+
+.result-label {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--text-primary);
+  margin: 0 0 0.25rem 0;
+}
+
+.result-description {
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Result Value */
+.result-value {
+  font-family: var(--font-family);
+  font-weight: 900;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  text-align: center;
+  padding: 0.75rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.result-value.success {
+  color: var(--success-color);
+  background-color: rgba(0, 184, 148, 0.1);
+  border: 2px solid rgba(0, 184, 148, 0.2);
+}
+
+.result-value.error {
+  color: var(--error-color);
+  background-color: rgba(231, 76, 60, 0.1);
+  border: 2px solid rgba(231, 76, 60, 0.2);
+}
+
+/* Confidence */
+.result-confidence {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  font-size: 0.875rem;
+}
+
+.confidence-label {
+  font-family: var(--font-family);
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.confidence-value {
+  font-family: var(--font-family);
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+/* Overall Assessment */
+.overall-assessment {
+  padding: 2rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.assessment-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.assessment-card.positive {
+  background-color: rgba(0, 184, 148, 0.1);
+  border: 2px solid rgba(0, 184, 148, 0.2);
+}
+
+.assessment-card.negative {
+  background-color: rgba(231, 76, 60, 0.1);
+  border: 2px solid rgba(231, 76, 60, 0.2);
+}
+
+.assessment-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.assessment-text {
+  flex: 1;
+}
+
+.assessment-title {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--text-primary);
+  margin: 0 0 0.25rem 0;
+}
+
+.assessment-description {
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Action Buttons */
+.action-buttons {
+  padding: 2rem;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+  background: white;
+}
+
+.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background-color: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.secondary-button:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-light);
+}
+
+.button-icon {
+  font-size: 1.125rem;
+}
+
+/* Animations */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .result-card {
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .result-card:last-child {
+    border-bottom: none;
+  }
+  
+  .result-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+  
+  .result-icon {
+    font-size: 2rem;
+  }
+  
+  .assessment-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .assessment-icon {
+    font-size: 1.5rem;
+  }
+  
+  .results-header,
+  .overall-assessment,
+  .action-buttons {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .results-header,
+  .overall-assessment,
+  .action-buttons {
+    padding: 1rem;
+  }
+  
+  .result-card {
+    padding: 1.5rem;
+  }
+  
+  .result-value {
+    font-size: 1.25rem;
+  }
+  
+  .secondary-button {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,321 @@
+/* Import Inter font for modern typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+
+/* CSS Variables - dario.io style */
+:root {
+  /* Primary colors - minimalist palette */
+  --primary-color: #111111;
+  --accent-color: #00b894; /* bright green accent */
+  --secondary-color: #333333;
+  
+  /* Neutral colors - lots of white space */
+  --background-color: #ffffff;
+  --surface-color: #ffffff;
+  --border-color: #e8e8e8;
+  --text-primary: #111111;
+  --text-secondary: #666666;
+  --text-light: #999999;
+  
+  /* Drag-and-drop zone */
+  --drop-zone-border: #e8e8e8;
+  --drop-zone-active: #00b894;
+  --drop-zone-background: #fafafa;
+  
+  /* Shadows and effects */
+  --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+  
+  /* Font family */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Container */
+.upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: var(--font-family);
+}
+
+/* Hero Section */
+.hero-section {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.hero-title {
+  font-family: var(--font-family);
+  font-weight: 900;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin: 0 0 1.5rem 0;
+}
+
+.accent-text {
+  color: var(--accent-color);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.hero-subtitle {
+  font-family: var(--font-family);
+  font-size: 1.25rem;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin: 0;
+  max-width: 600px;
+}
+
+/* Upload Zone */
+.upload-zone {
+  width: 100%;
+  max-width: 600px;
+  border: 2px dashed var(--drop-zone-border);
+  border-radius: 12px;
+  padding: 4rem 2rem;
+  background-color: var(--drop-zone-background);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.upload-zone:hover:not(.disabled):not(.processing) {
+  border-color: var(--accent-color);
+  background-color: rgba(0, 184, 148, 0.05);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.upload-zone.drag-active {
+  border-color: var(--accent-color);
+  background-color: rgba(0, 184, 148, 0.1);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.upload-zone.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.upload-zone.processing {
+  border-color: var(--accent-color);
+  background-color: rgba(0, 184, 148, 0.05);
+}
+
+/* Upload Content */
+.upload-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.upload-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 5rem;
+}
+
+.upload-text {
+  margin-bottom: 2rem;
+}
+
+.upload-title {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem 0;
+}
+
+.upload-subtitle {
+  font-family: var(--font-family);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.upload-link {
+  color: var(--accent-color);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* File Requirements */
+.file-requirements {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.requirement-text {
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: var(--text-light);
+  margin: 0;
+}
+
+/* Hidden File Input */
+.file-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+}
+
+/* Button Container */
+.button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Primary Button */
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2.5rem;
+  background-color: var(--accent-color);
+  color: white;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 1.125rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-light);
+  text-decoration: none;
+  min-height: 3.5rem;
+}
+
+.primary-button:hover:not(:disabled) {
+  background-color: #019875;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.primary-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.button-icon {
+  font-size: 1.25rem;
+}
+
+/* Loading Animations */
+.loading-spinner,
+.button-spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.button-spinner {
+  width: 20px;
+  height: 20px;
+  border-top-color: white;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.upload-container {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .upload-container {
+    padding: 1rem;
+  }
+  
+  .hero-section {
+    margin-bottom: 2rem;
+  }
+  
+  .hero-title {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+  
+  .hero-subtitle {
+    font-size: 1.125rem;
+  }
+  
+  .upload-zone {
+    padding: 2rem 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .upload-icon {
+    font-size: 3rem;
+    height: 4rem;
+    margin-bottom: 1rem;
+  }
+  
+  .upload-title {
+    font-size: 1.25rem;
+  }
+  
+  .primary-button {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    min-height: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .upload-container {
+    padding: 0.5rem;
+  }
+  
+  .upload-zone {
+    padding: 1.5rem 1rem;
+  }
+  
+  .upload-icon {
+    font-size: 2.5rem;
+    height: 3.5rem;
+  }
+  
+  .primary-button {
+    width: 100%;
+    justify-content: center;
+  }
+}

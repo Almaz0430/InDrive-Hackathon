@@ -1,0 +1,93 @@
+<div class="results-container" *ngIf="hasResults() || isAnalyzing">
+  <!-- Loading State -->
+  <div class="loading-container" *ngIf="isAnalyzing">
+    <div class="loading-content">
+      <div class="loading-spinner"></div>
+      <h3 class="loading-title">Проверка...</h3>
+      <p class="loading-subtitle">Анализируем состояние автомобиля</p>
+    </div>
+  </div>
+
+  <!-- Results Display -->
+  <div class="results-content" *ngIf="hasResults()">
+    <div class="results-header">
+      <h3 class="section-title">Результаты анализа</h3>
+      <p class="analysis-time">
+        Время анализа: {{ formatTimestamp(result!.timestamp) }}
+      </p>
+    </div>
+
+    <div class="results-grid">
+      <!-- Cleanliness Result -->
+      <div class="result-card cleanliness-card">
+        <div class="result-header">
+          <div class="result-icon">{{ getCleanlinessIcon() }}</div>
+          <div class="result-info">
+            <h4 class="result-label">Чистота</h4>
+            <p class="result-description">Состояние кузова автомобиля</p>
+          </div>
+        </div>
+        
+        <div class="result-value" [class]="getCleanlinessClass()">
+          {{ result!.cleanliness.displayText }}
+        </div>
+        
+        <div class="result-confidence">
+          <span class="confidence-label">Уверенность:</span>
+          <span class="confidence-value">{{ formatConfidence(result!.cleanliness.confidence) }}</span>
+        </div>
+      </div>
+
+      <!-- Integrity Result -->
+      <div class="result-card integrity-card">
+        <div class="result-header">
+          <div class="result-icon">{{ getIntegrityIcon() }}</div>
+          <div class="result-info">
+            <h4 class="result-label">Целостность</h4>
+            <p class="result-description">Наличие повреждений</p>
+          </div>
+        </div>
+        
+        <div class="result-value" [class]="getIntegrityClass()">
+          {{ result!.integrity.displayText }}
+        </div>
+        
+        <div class="result-confidence">
+          <span class="confidence-label">Уверенность:</span>
+          <span class="confidence-value">{{ formatConfidence(result!.integrity.confidence) }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Overall Assessment -->
+    <div class="overall-assessment">
+      <div class="assessment-card" [class]="analysisService.isPositiveResult(result!) ? 'positive' : 'negative'">
+        <div class="assessment-icon">
+          {{ analysisService.isPositiveResult(result!) ? '✅' : '⚠️' }}
+        </div>
+        <div class="assessment-text">
+          <h4 class="assessment-title">
+            {{ analysisService.isPositiveResult(result!) ? 'Отличное состояние' : 'Требует внимания' }}
+          </h4>
+          <p class="assessment-description">
+            {{ analysisService.isPositiveResult(result!) 
+              ? 'Автомобиль в хорошем состоянии' 
+              : 'Обнаружены проблемы, требующие внимания' }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <button 
+        class="secondary-button reset-button" 
+        (click)="onReset()"
+        type="button"
+      >
+        <span class="button-icon">🔄</span>
+        Загрузить новое фото
+      </button>
+    </div>
+  </div>
+</div>
