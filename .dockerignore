@@ -1,0 +1,10 @@
+# Исключаем ненужные файлы и папки из Docker-контекста
+.git
+.github
+.vscode
+node_modules
+dist
+npm-debug.log
+.dockerignore
+Dockerfile
+README.md
