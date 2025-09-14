@@ -17,7 +17,7 @@ RUN npm run build
 FROM nginx:stable-alpine AS final
 
 # Копируем собранные файлы из этапа сборки
-COPY --from=build /app/dist/in-drive-hackathon/browser /usr/share/nginx/html
+COPY --from=build /app/dist/InDrive-Hackathon/browser /usr/share/nginx/html
 
 # Копируем кастомную конфигурацию Nginx
 COPY nginx.conf /etc/nginx/conf.d/default.conf
