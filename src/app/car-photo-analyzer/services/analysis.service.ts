@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+import { environment } from '../../../environments/environment';
 import { delay, map, catchError } from 'rxjs/operators';
 
 // Интерфейсы для API ответа
@@ -84,7 +85,7 @@ export interface IntegrityResult {
   providedIn: 'root'
 })
 export class AnalysisService {
-  private readonly apiUrl = 'http://localhost:8000';
+  private readonly apiUrl = environment.apiUrl;
   private readonly minProcessingTime = 2000; // 2 секунды
   private readonly maxProcessingTime = 3000; // 3 секунды
 

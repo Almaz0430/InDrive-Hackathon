@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of, BehaviorSubject } from 'rxjs';
+import { environment } from '../../../environments/environment';
 import { map, catchError, tap } from 'rxjs/operators';
 
 export interface ApiHealthStatus {
@@ -15,7 +16,7 @@ export interface ApiHealthStatus {
   providedIn: 'root'
 })
 export class ApiHealthService {
-  private readonly apiUrl = 'http://localhost:8000';
+  private readonly apiUrl = environment.apiUrl;
   private healthStatus$ = new BehaviorSubject<ApiHealthStatus>({
     isOnline: false,
     status: 'unknown',
