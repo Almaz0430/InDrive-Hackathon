@@ -19,8 +19,12 @@ FROM nginx:stable-alpine AS final
 # Копируем собранные файлы из этапа сборки
 COPY --from=build /app/dist/InDrive-Hackathon/browser /usr/share/nginx/html
 
-# Копируем кастомную конфигурацию Nginx
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Устанавливаем gettext для использования envsubst, который подставит переменную окружения в конфиг
+RUN apk add --no-cache gettext
 
-# Открываем порт 80 для входящих соединений
-EXPOSE 80
+# Копируем шаблон конфигурации Nginx
+COPY nginx.conf /etc/nginx/conf.d/default.conf.template
+
+# Запускаем Nginx, предварительно подставив нужный порт в конфигурацию.
+# Railway автоматически предоставит переменную $PORT.
+CMD ["/bin/sh", "-c", "envsubst '${PORT}' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
