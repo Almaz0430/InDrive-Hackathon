@@ -14,10 +14,27 @@
   <div class="page-header">
     <h1 class="page-title">Анализатор состояния автомобиля</h1>
     <p class="page-description">Загрузите фото автомобиля для автоматической оценки его состояния</p>
+    
+    <!-- Статус API -->
+    <div class="api-status" [class]="getApiStatusClass()" *ngIf="apiHealthStatus">
+      <lucide-icon 
+        [img]="apiHealthStatus?.isOnline ? WifiIcon : WifiOffIcon" 
+        class="status-icon">
+      </lucide-icon>
+      <span class="status-text">{{ getApiStatusText() }}</span>
+      <button 
+        class="refresh-button" 
+        (click)="refreshApiStatus()" 
+        type="button"
+        title="Обновить статус"
+      >
+        <lucide-icon [img]="LoaderIcon" class="refresh-icon"></lucide-icon>
+      </button>
+    </div>
   </div>
 
   <!-- Компонент загрузки фото -->
-  <div class="upload-section">
+  <div class="upload-section" *ngIf="!hasUploadedFile()">
     <app-photo-upload
       [disabled]="state.isAnalyzing"
       (fileUploaded)="onFileUploaded($event)"
@@ -38,7 +55,7 @@
   <!-- Кнопка анализа -->
   <div class="analysis-controls" *ngIf="hasUploadedFile()">
     <button 
-      class="btn btn-primary btn-lg analysis-button" 
+      class="primary-button analysis-button" 
       [disabled]="!canStartAnalysis()"
       (click)="onStartAnalysis()"
       type="button"

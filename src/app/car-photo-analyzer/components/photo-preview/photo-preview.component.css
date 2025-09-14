@@ -117,20 +117,10 @@
   padding: 2rem;
 }
 
-.analysis-spinner {
-  width: 40px;
-  height: 40px;
-  border: 3px solid var(--border-color);
-  border-top: 3px solid var(--accent-color);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin: 0 auto 1rem auto;
-}
-
 .analysis-text {
   font-family: var(--font-family);
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.125rem;
   color: var(--text-primary);
   margin: 0;
 }
@@ -273,11 +263,6 @@
   
   .analysis-content {
     padding: 1rem;
-  }
-  
-  .analysis-spinner {
-    width: 32px;
-    height: 32px;
   }
 }
 

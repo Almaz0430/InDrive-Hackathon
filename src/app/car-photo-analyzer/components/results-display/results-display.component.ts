@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LucideAngularModule, Loader2, RotateCcw, CheckCircle, AlertTriangle, Sparkles, Shield } from 'lucide-angular';
-import { AnalysisResult, AnalysisService } from '../../services/analysis.service';
+import { LucideAngularModule, Loader2, RotateCcw, CheckCircle, AlertTriangle, Sparkles, Shield, Eye } from 'lucide-angular';
+import { AnalysisResult, AnalysisService, Detection } from '../../services/analysis.service';
 
 @Component({
   selector: 'app-results-display',
@@ -22,6 +22,9 @@ export class ResultsDisplayComponent {
   readonly AlertIcon = AlertTriangle;
   readonly SparklesIcon = Sparkles;
   readonly ShieldIcon = Shield;
+  readonly EyeIcon = Eye;
+
+  showVisualization = false;
 
   constructor(public analysisService: AnalysisService) {}
 
@@ -40,35 +43,41 @@ export class ResultsDisplayComponent {
   }
 
   /**
-   * Получает CSS класс для результата чистоты
+   * Получает CSS класс для состояния автомобиля
    */
-  getCleanlinessClass(): string {
+  getCarConditionClass(): string {
     if (!this.result) return '';
-    return this.analysisService.getResultCssClass(this.result.cleanliness.status, true);
+    return this.analysisService.getResultCssClass(this.result.carCondition);
   }
 
   /**
-   * Получает CSS класс для результата целостности
+   * Получает текст состояния автомобиля
    */
-  getIntegrityClass(): string {
+  getCarConditionText(): string {
     if (!this.result) return '';
-    return this.analysisService.getResultCssClass(this.result.integrity.status, false);
+    return this.analysisService.getCarConditionText(this.result.carCondition);
   }
 
   /**
-   * Получает иконку для результата чистоты
+   * Получает иконку состояния автомобиля
    */
-  getCleanlinessIcon(): string {
+  getCarConditionIcon(): string {
     if (!this.result) return '';
-    return this.analysisService.getCleanlinessIcon(this.result.cleanliness.status);
+    return this.analysisService.getCarConditionIcon(this.result.carCondition);
   }
 
   /**
-   * Получает иконку для результата целостности
+   * Переключает отображение визуализации
    */
-  getIntegrityIcon(): string {
-    if (!this.result) return '';
-    return this.analysisService.getIntegrityIcon(this.result.integrity.status);
+  toggleVisualization(): void {
+    this.showVisualization = !this.showVisualization;
+  }
+
+  /**
+   * Проверяет, есть ли визуализация
+   */
+  hasVisualization(): boolean {
+    return !!(this.result?.visualization);
   }
 
   /**
