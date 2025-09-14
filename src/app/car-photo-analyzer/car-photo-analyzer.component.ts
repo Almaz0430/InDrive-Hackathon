@@ -81,24 +81,26 @@ export class CarPhotoAnalyzerComponent {
     };
 
     // Запускаем анализ
-    this.analysisService.analyzeImage(this.state.uploadedFile.previewUrl).subscribe({
-      next: (result: AnalysisResult) => {
-        this.state = {
-          ...this.state,
-          isAnalyzing: false,
-          analysisResult: result
-        };
-        console.log('Analysis completed:', result);
-      },
-      error: (error: Error) => {
-        this.state = {
-          ...this.state,
-          isAnalyzing: false,
-          error: 'Ошибка при анализе изображения. Попробуйте еще раз.'
-        };
-        console.error('Analysis error:', error);
-      }
-    });
+    if (this.state.uploadedFile) {
+      this.analysisService.analyzeImage(this.state.uploadedFile.previewUrl).subscribe({
+        next: (result: AnalysisResult) => {
+          this.state = {
+            ...this.state,
+            isAnalyzing: false,
+            analysisResult: result
+          };
+          console.log('Analysis completed:', result);
+        },
+        error: (error: Error) => {
+          this.state = {
+            ...this.state,
+            isAnalyzing: false,
+            error: 'Ошибка при анализе изображения. Попробуйте еще раз.'
+          };
+          console.error('Analysis error:', error);
+        }
+      });
+    }
   }
 
   onReset(): void {

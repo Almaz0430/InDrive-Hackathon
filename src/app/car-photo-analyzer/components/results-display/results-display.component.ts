@@ -14,7 +14,7 @@ export class ResultsDisplayComponent {
   @Input() isAnalyzing: boolean = false;
   @Output() reset = new EventEmitter<void>();
 
-  constructor(private analysisService: AnalysisService) {}
+  constructor(public analysisService: AnalysisService) {}
 
   /**
    * Обработчик клика по кнопке сброса
