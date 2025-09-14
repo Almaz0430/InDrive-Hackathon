@@ -1,47 +1,60 @@
 <div class="car-analyzer-container">
-  <!-- Error Display -->
+  <!-- Уведомления об ошибках -->
   <div class="error-container" *ngIf="state.error">
     <div class="error-message">
-      <span class="error-icon">⚠️</span>
+      <lucide-icon [img]="AlertIcon" class="error-icon"></lucide-icon>
       {{ state.error }}
-      <button class="error-close" (click)="clearError()" type="button">×</button>
+      <button class="error-close" (click)="clearError()" type="button" aria-label="Закрыть">
+        <lucide-icon [img]="CloseIcon"></lucide-icon>
+      </button>
     </div>
   </div>
 
-  <!-- Photo Upload Component -->
-  <app-photo-upload
-    [disabled]="state.isAnalyzing"
-    (fileUploaded)="onFileUploaded($event)"
-    (uploadError)="onUploadError($event)"
-  ></app-photo-upload>
+  <!-- Заголовок страницы -->
+  <div class="page-header">
+    <h1 class="page-title">Анализатор состояния автомобиля</h1>
+    <p class="page-description">Загрузите фото автомобиля для автоматической оценки его состояния</p>
+  </div>
 
-  <!-- Photo Preview Component -->
-  <app-photo-preview
-    *ngIf="hasUploadedFile()"
-    [uploadedFile]="state.uploadedFile"
-    [isAnalyzing]="state.isAnalyzing"
-    (removePhoto)="onRemovePhoto()"
-    (replacePhoto)="onReplacePhoto()"
-  ></app-photo-preview>
+  <!-- Компонент загрузки фото -->
+  <div class="upload-section">
+    <app-photo-upload
+      [disabled]="state.isAnalyzing"
+      (fileUploaded)="onFileUploaded($event)"
+      (uploadError)="onUploadError($event)"
+    ></app-photo-upload>
+  </div>
 
-  <!-- Analysis Button -->
+  <!-- Компонент превью фото -->
+  <div class="preview-section" *ngIf="hasUploadedFile()">
+    <app-photo-preview
+      [uploadedFile]="state.uploadedFile"
+      [isAnalyzing]="state.isAnalyzing"
+      (removePhoto)="onRemovePhoto()"
+      (replacePhoto)="onReplacePhoto()"
+    ></app-photo-preview>
+  </div>
+
+  <!-- Кнопка анализа -->
   <div class="analysis-controls" *ngIf="hasUploadedFile()">
     <button 
-      class="primary-button analysis-button" 
+      class="btn btn-primary btn-lg analysis-button" 
       [disabled]="!canStartAnalysis()"
       (click)="onStartAnalysis()"
       type="button"
     >
-      <span class="button-icon" *ngIf="!state.isAnalyzing">🔍</span>
-      <div class="button-spinner" *ngIf="state.isAnalyzing"></div>
-      {{ state.isAnalyzing ? 'Проверка...' : 'Проверить состояние' }}
+      <lucide-icon [img]="SearchIcon" class="button-icon" *ngIf="!state.isAnalyzing"></lucide-icon>
+      <lucide-icon [img]="LoaderIcon" class="loading-spinner" *ngIf="state.isAnalyzing"></lucide-icon>
+      {{ state.isAnalyzing ? 'Анализируем...' : 'Начать анализ' }}
     </button>
   </div>
 
-  <!-- Results Display Component -->
-  <app-results-display
-    [result]="state.analysisResult"
-    [isAnalyzing]="state.isAnalyzing"
-    (reset)="onReset()"
-  ></app-results-display>
+  <!-- Компонент отображения результатов -->
+  <div class="results-section" *ngIf="state.analysisResult || state.isAnalyzing">
+    <app-results-display
+      [result]="state.analysisResult"
+      [isAnalyzing]="state.isAnalyzing"
+      (reset)="onReset()"
+    ></app-results-display>
+  </div>
 </div>

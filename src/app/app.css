@@ -1,0 +1,9 @@
+/* Стили для основного компонента приложения */
+.app-container {
+  min-height: 100vh;
+  background-color: var(--background-primary);
+}
+
+.main-content {
+  padding: var(--spacing-lg) 0;
+}

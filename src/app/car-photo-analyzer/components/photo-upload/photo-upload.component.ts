@@ -1,11 +1,12 @@
 import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LucideAngularModule, Camera, Upload, Loader2, FolderOpen } from 'lucide-angular';
 import { PhotoUploadService, UploadedFile, ValidationResult } from '../../services/photo-upload.service';
 
 @Component({
   selector: 'app-photo-upload',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, LucideAngularModule],
   templateUrl: './photo-upload.component.html',
   styleUrls: ['./photo-upload.component.css']
 })
@@ -16,6 +17,12 @@ export class PhotoUploadComponent {
 
   isDragActive = false;
   isProcessing = false;
+
+  // Иконки
+  readonly CameraIcon = Camera;
+  readonly UploadIcon = Upload;
+  readonly LoaderIcon = Loader2;
+  readonly FolderIcon = FolderOpen;
 
   constructor(private photoUploadService: PhotoUploadService) {}
 

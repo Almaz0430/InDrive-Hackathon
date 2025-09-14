@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LucideAngularModule, Search, Loader2, AlertTriangle, X } from 'lucide-angular';
 import { PhotoUploadComponent } from './components/photo-upload/photo-upload.component';
 import { PhotoPreviewComponent } from './components/photo-preview/photo-preview.component';
 import { ResultsDisplayComponent } from './components/results-display/results-display.component';
@@ -16,7 +17,7 @@ interface CarPhotoAnalyzerState {
 @Component({
   selector: 'app-car-photo-analyzer',
   standalone: true,
-  imports: [CommonModule, PhotoUploadComponent, PhotoPreviewComponent, ResultsDisplayComponent],
+  imports: [CommonModule, LucideAngularModule, PhotoUploadComponent, PhotoPreviewComponent, ResultsDisplayComponent],
   templateUrl: './car-photo-analyzer.component.html',
   styleUrl: './car-photo-analyzer.component.css'
 })
@@ -27,6 +28,12 @@ export class CarPhotoAnalyzerComponent {
     analysisResult: null,
     error: null
   };
+
+  // Иконки
+  readonly SearchIcon = Search;
+  readonly LoaderIcon = Loader2;
+  readonly AlertIcon = AlertTriangle;
+  readonly CloseIcon = X;
 
   constructor(private analysisService: AnalysisService) {}
 

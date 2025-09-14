@@ -1,13 +1,4 @@
 <div class="upload-container">
-  <!-- Hero Section -->
-  <div class="hero-section">
-    <h1 class="hero-title">
-      Анализ <span class="accent-text">фото</span> автомобилей
-    </h1>
-    <p class="hero-subtitle">
-      Загрузите фото → нажмите кнопку → получите результат
-    </p>
-  </div>
 
   <!-- Upload Zone -->
   <div 
@@ -23,9 +14,11 @@
     <div class="upload-content">
       <!-- Upload Icon -->
       <div class="upload-icon">
-        <ng-container *ngIf="!isProcessing">📷</ng-container>
+        <ng-container *ngIf="!isProcessing">
+          <lucide-icon [img]="CameraIcon" class="icon-camera"></lucide-icon>
+        </ng-container>
         <ng-container *ngIf="isProcessing">
-          <div class="loading-spinner"></div>
+          <lucide-icon [img]="LoaderIcon" class="icon-loader"></lucide-icon>
         </ng-container>
       </div>
 
@@ -78,11 +71,11 @@
       type="button"
     >
       <ng-container *ngIf="!isProcessing">
-        <span class="button-icon">📁</span>
+        <lucide-icon [img]="FolderIcon" class="button-icon"></lucide-icon>
         Загрузить фото
       </ng-container>
       <ng-container *ngIf="isProcessing">
-        <div class="button-spinner"></div>
+        <lucide-icon [img]="LoaderIcon" class="button-spinner"></lucide-icon>
         Обработка...
       </ng-container>
     </button>

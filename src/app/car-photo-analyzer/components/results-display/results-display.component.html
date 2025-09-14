@@ -2,7 +2,7 @@
   <!-- Loading State -->
   <div class="loading-container" *ngIf="isAnalyzing">
     <div class="loading-content">
-      <div class="loading-spinner"></div>
+      <lucide-icon [img]="LoaderIcon" class="loading-spinner"></lucide-icon>
       <h3 class="loading-title">Проверка...</h3>
       <p class="loading-subtitle">Анализируем состояние автомобиля</p>
     </div>
@@ -21,7 +21,7 @@
       <!-- Cleanliness Result -->
       <div class="result-card cleanliness-card">
         <div class="result-header">
-          <div class="result-icon">{{ getCleanlinessIcon() }}</div>
+          <lucide-icon [img]="SparklesIcon" class="result-icon"></lucide-icon>
           <div class="result-info">
             <h4 class="result-label">Чистота</h4>
             <p class="result-description">Состояние кузова автомобиля</p>
@@ -41,7 +41,7 @@
       <!-- Integrity Result -->
       <div class="result-card integrity-card">
         <div class="result-header">
-          <div class="result-icon">{{ getIntegrityIcon() }}</div>
+          <lucide-icon [img]="ShieldIcon" class="result-icon"></lucide-icon>
           <div class="result-info">
             <h4 class="result-label">Целостность</h4>
             <p class="result-description">Наличие повреждений</p>
@@ -62,9 +62,10 @@
     <!-- Overall Assessment -->
     <div class="overall-assessment">
       <div class="assessment-card" [class]="analysisService.isPositiveResult(result!) ? 'positive' : 'negative'">
-        <div class="assessment-icon">
-          {{ analysisService.isPositiveResult(result!) ? '✅' : '⚠️' }}
-        </div>
+        <lucide-icon 
+          [img]="analysisService.isPositiveResult(result!) ? CheckIcon : AlertIcon" 
+          class="assessment-icon">
+        </lucide-icon>
         <div class="assessment-text">
           <h4 class="assessment-title">
             {{ analysisService.isPositiveResult(result!) ? 'Отличное состояние' : 'Требует внимания' }}
@@ -81,13 +82,14 @@
     <!-- Action Buttons -->
     <div class="action-buttons">
       <button 
-        class="secondary-button reset-button" 
+        class="btn btn-secondary reset-button" 
         (click)="onReset()"
         type="button"
       >
-        <span class="button-icon">🔄</span>
+        <lucide-icon [img]="ResetIcon" class="button-icon"></lucide-icon>
         Загрузить новое фото
       </button>
     </div>
   </div>
 </div>
+

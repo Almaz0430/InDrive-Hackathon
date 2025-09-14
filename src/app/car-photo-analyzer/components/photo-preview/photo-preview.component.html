@@ -8,7 +8,7 @@
         type="button"
         title="Заменить фото"
       >
-        <span class="button-icon">🔄</span>
+        <lucide-icon [img]="ReplaceIcon" class="button-icon"></lucide-icon>
         Заменить
       </button>
       <button 
@@ -17,7 +17,7 @@
         type="button"
         title="Удалить фото"
       >
-        <span class="button-icon">🗑️</span>
+        <lucide-icon [img]="RemoveIcon" class="button-icon"></lucide-icon>
         Удалить
       </button>
     </div>
@@ -36,7 +36,7 @@
       <!-- Analysis Overlay -->
       <div class="analysis-overlay" *ngIf="isAnalyzing">
         <div class="analysis-content">
-          <div class="analysis-spinner"></div>
+          <lucide-icon [img]="LoaderIcon" class="analysis-spinner"></lucide-icon>
           <p class="analysis-text">Анализируем...</p>
         </div>
       </div>
@@ -46,7 +46,7 @@
     <div class="photo-info">
       <div class="file-details">
         <div class="file-name">
-          <span class="file-icon">📷</span>
+          <lucide-icon [img]="CameraIcon" class="file-icon"></lucide-icon>
           <span class="name-text">{{ uploadedFile!.file.name }}</span>
         </div>
         

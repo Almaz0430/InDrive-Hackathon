@@ -1,104 +1,73 @@
-/* Import Inter font for modern typography */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+/* Стили для компонента загрузки фото */
 
-/* CSS Variables - dario.io style */
-:root {
-  /* Primary colors - minimalist palette */
-  --primary-color: #111111;
-  --accent-color: #00b894; /* bright green accent */
-  --secondary-color: #333333;
-  
-  /* Neutral colors - lots of white space */
-  --background-color: #ffffff;
-  --surface-color: #ffffff;
-  --border-color: #e8e8e8;
-  --text-primary: #111111;
-  --text-secondary: #666666;
-  --text-light: #999999;
-  
-  /* Drag-and-drop zone */
-  --drop-zone-border: #e8e8e8;
-  --drop-zone-active: #00b894;
-  --drop-zone-background: #fafafa;
-  
-  /* Shadows and effects */
-  --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
-  --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
-  
-  /* Font family */
-  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-}
-
-/* Container */
+/* Контейнер */
 .upload-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   max-width: 800px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: var(--spacing-lg);
   font-family: var(--font-family);
 }
 
-/* Hero Section */
+/* Секция заголовка */
 .hero-section {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: var(--spacing-2xl);
 }
 
 .hero-title {
   font-family: var(--font-family);
-  font-weight: 900;
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  line-height: 1.1;
+  font-weight: 700;
+  font-size: clamp(28px, 6vw, 48px);
+  line-height: 1.2;
   letter-spacing: -0.02em;
   color: var(--text-primary);
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 var(--spacing-lg) 0;
 }
 
 .accent-text {
   color: var(--accent-color);
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
+  font-weight: 700;
 }
 
 .hero-subtitle {
   font-family: var(--font-family);
-  font-size: 1.25rem;
-  line-height: 1.5;
+  font-size: 18px;
+  line-height: 1.6;
   font-weight: 400;
   color: var(--text-secondary);
   margin: 0;
   max-width: 600px;
 }
 
-/* Upload Zone */
+/* Зона загрузки */
 .upload-zone {
   width: 100%;
   max-width: 600px;
-  border: 2px dashed var(--drop-zone-border);
-  border-radius: 12px;
-  padding: 4rem 2rem;
-  background-color: var(--drop-zone-background);
-  transition: all 0.3s ease;
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-2xl) var(--spacing-lg);
+  background-color: var(--background-light);
+  transition: all var(--transition-normal);
   cursor: pointer;
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-lg);
   position: relative;
 }
 
 .upload-zone:hover:not(.disabled):not(.processing) {
   border-color: var(--accent-color);
-  background-color: rgba(0, 184, 148, 0.05);
+  background-color: rgba(0, 200, 81, 0.05);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-medium);
+  box-shadow: var(--shadow-md);
 }
 
 .upload-zone.drag-active {
   border-color: var(--accent-color);
-  background-color: rgba(0, 184, 148, 0.1);
+  background-color: rgba(0, 200, 81, 0.1);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-medium);
+  box-shadow: var(--shadow-lg);
 }
 
 .upload-zone.disabled {
@@ -108,10 +77,10 @@
 
 .upload-zone.processing {
   border-color: var(--accent-color);
-  background-color: rgba(0, 184, 148, 0.05);
+  background-color: rgba(0, 200, 81, 0.05);
 }
 
-/* Upload Content */
+/* Содержимое загрузки */
 .upload-content {
   display: flex;
   flex-direction: column;
@@ -120,30 +89,42 @@
 }
 
 .upload-icon {
-  font-size: 4rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--spacing-lg);
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 5rem;
+  height: 64px;
+}
+
+.icon-camera {
+  width: 48px;
+  height: 48px;
+  color: var(--accent-color);
+}
+
+.icon-loader {
+  width: 48px;
+  height: 48px;
+  color: var(--accent-color);
+  animation: spin 1s linear infinite;
 }
 
 .upload-text {
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-xl);
 }
 
 .upload-title {
   font-family: var(--font-family);
-  font-weight: 700;
-  font-size: 1.5rem;
-  line-height: 1.2;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.3;
   color: var(--text-primary);
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 var(--spacing-xs) 0;
 }
 
 .upload-subtitle {
   font-family: var(--font-family);
-  font-size: 1rem;
+  font-size: 16px;
   line-height: 1.5;
   color: var(--text-secondary);
   margin: 0;
@@ -151,20 +132,25 @@
 
 .upload-link {
   color: var(--accent-color);
-  font-weight: 600;
+  font-weight: 500;
   text-decoration: underline;
+  cursor: pointer;
 }
 
-/* File Requirements */
+.upload-link:hover {
+  text-decoration: none;
+}
+
+/* Требования к файлам */
 .file-requirements {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: var(--spacing-xs);
 }
 
 .requirement-text {
   font-family: var(--font-family);
-  font-size: 0.875rem;
+  font-size: 14px;
   line-height: 1.4;
   color: var(--text-light);
   margin: 0;
@@ -179,37 +165,37 @@
   height: 0;
 }
 
-/* Button Container */
+/* Контейнер кнопки */
 .button-container {
   display: flex;
   justify-content: center;
   width: 100%;
 }
 
-/* Primary Button */
+/* Основная кнопка */
 .primary-button {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 2.5rem;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-xl);
   background-color: var(--accent-color);
-  color: white;
+  color: var(--text-white);
   font-family: var(--font-family);
-  font-weight: 700;
-  font-size: 1.125rem;
+  font-weight: 600;
+  font-size: 16px;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: var(--shadow-light);
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-md);
   text-decoration: none;
-  min-height: 3.5rem;
+  min-height: 48px;
 }
 
 .primary-button:hover:not(:disabled) {
-  background-color: #019875;
+  background-color: var(--accent-hover);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-medium);
+  box-shadow: var(--shadow-lg);
 }
 
 .primary-button:disabled {
@@ -219,24 +205,14 @@
 }
 
 .button-icon {
-  font-size: 1.25rem;
+  width: 18px;
+  height: 18px;
 }
 
-/* Loading Animations */
-.loading-spinner,
 .button-spinner {
-  width: 24px;
-  height: 24px;
-  border: 2px solid transparent;
-  border-top: 2px solid currentColor;
-  border-radius: 50%;
+  width: 18px;
+  height: 18px;
   animation: spin 1s linear infinite;
-}
-
-.button-spinner {
-  width: 20px;
-  height: 20px;
-  border-top-color: white;
 }
 
 @keyframes spin {
@@ -260,62 +236,70 @@
   animation: fadeInUp 0.6s ease-out;
 }
 
-/* Responsive Design */
+/* Адаптивный дизайн */
 @media (max-width: 768px) {
   .upload-container {
-    padding: 1rem;
+    padding: var(--spacing-md);
   }
   
   .hero-section {
-    margin-bottom: 2rem;
+    margin-bottom: var(--spacing-xl);
   }
   
   .hero-title {
-    font-size: clamp(2rem, 8vw, 3rem);
+    font-size: clamp(24px, 8vw, 36px);
   }
   
   .hero-subtitle {
-    font-size: 1.125rem;
+    font-size: 16px;
   }
   
   .upload-zone {
-    padding: 2rem 1rem;
-    margin-bottom: 1.5rem;
+    padding: var(--spacing-xl) var(--spacing-md);
+    margin-bottom: var(--spacing-md);
   }
   
   .upload-icon {
-    font-size: 3rem;
-    height: 4rem;
-    margin-bottom: 1rem;
+    font-size: 40px;
+    height: 48px;
+    margin-bottom: var(--spacing-md);
   }
   
   .upload-title {
-    font-size: 1.25rem;
+    font-size: 18px;
   }
   
   .primary-button {
-    padding: 0.875rem 2rem;
-    font-size: 1rem;
-    min-height: 3rem;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: 14px;
+    min-height: 44px;
   }
 }
 
 @media (max-width: 480px) {
   .upload-container {
-    padding: 0.5rem;
+    padding: var(--spacing-sm);
   }
   
   .upload-zone {
-    padding: 1.5rem 1rem;
+    padding: var(--spacing-lg) var(--spacing-sm);
   }
   
   .upload-icon {
-    font-size: 2.5rem;
-    height: 3.5rem;
+    font-size: 36px;
+    height: 44px;
   }
   
   .primary-button {
     width: 100%;
     justify-content: center;
+  }
+  
+  .hero-title {
+    font-size: clamp(20px, 8vw, 28px);
+  }
+  
+  .hero-subtitle {
+    font-size: 14px;
   }
 }

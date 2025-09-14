@@ -1,118 +1,107 @@
-/* Import Inter font for modern typography */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
-
-/* CSS Variables - dario.io style */
+/* Стили для анализатора фото автомобилей */
 :host {
-  /* Primary colors - minimalist palette */
-  --primary-color: #111111;
-  --accent-color: #00b894; /* bright green accent */
-  --secondary-color: #333333;
-  
-  /* Result colors */
-  --success-color: #00b894; /* same green for consistency */
-  --error-color: #e74c3c;
-  --warning-color: #f39c12;
-  
-  /* Neutral colors - lots of white space */
-  --background-color: #ffffff;
-  --surface-color: #ffffff;
-  --border-color: #e8e8e8;
-  --text-primary: #111111;
-  --text-secondary: #666666;
-  --text-light: #999999;
-  
-  /* Shadows and effects */
-  --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
-  --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
-  
-  /* Font */
-  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  
   display: block;
   font-family: var(--font-family);
-  background-color: var(--background-color);
+  background-color: var(--background-primary);
   min-height: 100vh;
 }
 
-/* App Container */
+/* Основной контейнер */
 .car-analyzer-container {
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: var(--spacing-2xl) var(--spacing-md);
+  background-color: var(--background-primary);
 }
 
-/* Error Display */
+/* Отображение ошибок */
 .error-container {
   position: fixed;
-  top: 2rem;
-  right: 2rem;
+  top: var(--spacing-lg);
+  right: var(--spacing-lg);
   z-index: 1000;
-  animation: slideInRight 0.3s ease-out;
+  animation: slideInRight var(--transition-normal);
 }
 
 .error-message {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 1.5rem;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-lg);
   background-color: var(--error-color);
-  color: white;
-  border-radius: 8px;
-  box-shadow: var(--shadow-medium);
-  font-weight: 600;
+  color: var(--text-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  font-weight: 500;
   max-width: 400px;
+  font-size: 14px;
 }
 
 .error-icon {
-  font-size: 1.25rem;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
 }
 
 .error-close {
   background: none;
   border: none;
-  color: white;
-  font-size: 1.5rem;
+  color: var(--text-white);
   cursor: pointer;
   padding: 0;
   margin-left: auto;
   line-height: 1;
+  transition: opacity var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
 }
 
 .error-close:hover {
   opacity: 0.8;
 }
 
-/* Analysis Section */
+/* Секция анализа */
 .analysis-section {
-  margin-top: 3rem;
-  padding: 2rem 0;
+  margin-top: var(--spacing-2xl);
+  padding: var(--spacing-lg) 0;
   animation: fadeInUp 0.6s ease-out;
 }
 
-/* Preview Container */
+/* Контейнер превью */
 .preview-container {
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-lg);
 }
 
 .section-title {
   font-family: var(--font-family);
-  font-weight: 700;
-  font-size: 1.5rem;
+  font-weight: 600;
+  font-size: 24px;
   color: var(--text-primary);
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 var(--spacing-lg) 0;
   text-align: center;
+  line-height: 1.3;
 }
 
 .photo-preview {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  padding: 2rem;
-  background: white;
-  border-radius: 12px;
-  box-shadow: var(--shadow-light);
+  gap: var(--spacing-md);
+  padding: var(--spacing-xl);
+  background: var(--surface-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
   border: 1px solid var(--border-color);
+  transition: all var(--transition-normal);
+}
+
+.photo-preview:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
 }
 
 .preview-image {
@@ -120,8 +109,8 @@
   max-height: 400px;
   width: auto;
   height: auto;
-  border-radius: 8px;
-  box-shadow: var(--shadow-light);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
 }
 
 .photo-info {
@@ -129,73 +118,68 @@
 }
 
 .photo-name {
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text-primary);
-  margin: 0 0 0.25rem 0;
+  margin: 0 0 var(--spacing-xs) 0;
   word-break: break-word;
+  font-size: 16px;
 }
 
 .photo-size {
-  font-size: 0.875rem;
-  color: var(--text-light);
+  font-size: 14px;
+  color: var(--text-secondary);
   margin: 0;
 }
 
-/* Analysis Controls */
+/* Элементы управления анализом */
 .analysis-controls {
   display: flex;
   justify-content: center;
-  margin: 2rem 0;
+  margin: var(--spacing-xl) 0;
 }
 
 .primary-button {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 2.5rem;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-xl);
   background-color: var(--accent-color);
-  color: white;
+  color: var(--text-white);
   font-family: var(--font-family);
-  font-weight: 700;
-  font-size: 1.125rem;
+  font-weight: 600;
+  font-size: 16px;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: var(--shadow-light);
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-md);
   text-decoration: none;
-  min-height: 3.5rem;
+  min-height: 48px;
 }
 
 .primary-button:hover:not(:disabled) {
-  background-color: #019875;
+  background-color: var(--accent-hover);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-medium);
+  box-shadow: var(--shadow-lg);
 }
 
 .primary-button:disabled {
   background-color: var(--text-light);
   cursor: not-allowed;
   transform: none;
-  box-shadow: none;
+  box-shadow: var(--shadow-sm);
+  opacity: 0.6;
 }
 
 .button-icon {
-  font-size: 1.25rem;
-}
-
-.button-spinner {
-  width: 20px;
-  height: 20px;
-  border: 2px solid transparent;
-  border-top: 2px solid currentColor;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+  width: 18px;
+  height: 18px;
 }
 
 .analysis-button {
-  font-size: 1.25rem;
-  padding: 1.25rem 3rem;
+  font-size: 18px;
+  padding: var(--spacing-lg) var(--spacing-2xl);
+  font-weight: 600;
 }
 
 @keyframes spin {
@@ -226,24 +210,25 @@
   }
 }
 
-/* Responsive Design */
+/* Адаптивный дизайн */
 @media (max-width: 768px) {
   .car-analyzer-container {
-    padding: 1rem;
+    padding: var(--spacing-lg) var(--spacing-sm);
   }
   
   .error-container {
-    top: 1rem;
-    right: 1rem;
-    left: 1rem;
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    left: var(--spacing-sm);
   }
   
   .error-message {
     max-width: none;
+    font-size: 13px;
   }
   
   .photo-preview {
-    padding: 1.5rem;
+    padding: var(--spacing-lg);
   }
   
   .preview-image {
@@ -254,15 +239,19 @@
     width: 100%;
     justify-content: center;
   }
+  
+  .section-title {
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 480px) {
   .car-analyzer-container {
-    padding: 0.5rem;
+    padding: var(--spacing-md) var(--spacing-xs);
   }
   
   .photo-preview {
-    padding: 1rem;
+    padding: var(--spacing-md);
   }
   
   .preview-image {
@@ -270,7 +259,97 @@
   }
   
   .primary-button {
-    padding: 1rem 2rem;
-    font-size: 1rem;
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 14px;
   }
+  
+  .analysis-button {
+    font-size: 16px;
+    padding: var(--spacing-md) var(--spacing-xl);
+  }
+  
+  .section-title {
+    font-size: 18px;
+  }
+}/* За
+головок страницы */
+.page-header {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.page-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 var(--spacing-md) 0;
+  line-height: 1.2;
+}
+
+.page-description {
+  font-size: 18px;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Секции */
+.upload-section,
+.preview-section,
+.results-section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.preview-section {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+.results-section {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Переопределение стилей кнопки для анализа */
+.analysis-button {
+  min-width: 200px;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+}
+
+/* Адаптивные стили для заголовка */
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 24px;
+  }
+  
+  .page-description {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 20px;
+  }
+  
+  .page-description {
+    font-size: 14px;
+  }
+  
+  .analysis-button {
+    min-width: auto;
+  }
+}/* Стили для
+ иконок */
+.loading-spinner {
+  width: 18px;
+  height: 18px;
+  animation: spin 1s linear infinite;
+}
+
+.error-close lucide-icon {
+  width: 16px;
+  height: 16px;
 }

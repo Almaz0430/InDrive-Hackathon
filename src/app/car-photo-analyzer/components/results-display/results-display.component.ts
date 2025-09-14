@@ -1,11 +1,12 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LucideAngularModule, Loader2, RotateCcw, CheckCircle, AlertTriangle, Sparkles, Shield } from 'lucide-angular';
 import { AnalysisResult, AnalysisService } from '../../services/analysis.service';
 
 @Component({
   selector: 'app-results-display',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, LucideAngularModule],
   templateUrl: './results-display.component.html',
   styleUrls: ['./results-display.component.css']
 })
@@ -13,6 +14,14 @@ export class ResultsDisplayComponent {
   @Input() result: AnalysisResult | null = null;
   @Input() isAnalyzing: boolean = false;
   @Output() reset = new EventEmitter<void>();
+
+  // Иконки
+  readonly LoaderIcon = Loader2;
+  readonly ResetIcon = RotateCcw;
+  readonly CheckIcon = CheckCircle;
+  readonly AlertIcon = AlertTriangle;
+  readonly SparklesIcon = Sparkles;
+  readonly ShieldIcon = Shield;
 
   constructor(public analysisService: AnalysisService) {}
 
@@ -80,3 +89,4 @@ export class ResultsDisplayComponent {
     }).format(timestamp);
   }
 }
+

@@ -108,3 +108,4 @@ describe('AnalysisService', () => {
     expect(uniqueTimes.size).toBeGreaterThan(1);
   });
 });
+

@@ -1,11 +1,12 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LucideAngularModule, RotateCcw, Trash2, Camera, Loader2 } from 'lucide-angular';
 import { UploadedFile } from '../../services/photo-upload.service';
 
 @Component({
   selector: 'app-photo-preview',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, LucideAngularModule],
   templateUrl: './photo-preview.component.html',
   styleUrls: ['./photo-preview.component.css']
 })
@@ -14,6 +15,12 @@ export class PhotoPreviewComponent {
   @Input() isAnalyzing: boolean = false;
   @Output() removePhoto = new EventEmitter<void>();
   @Output() replacePhoto = new EventEmitter<void>();
+
+  // Иконки
+  readonly ReplaceIcon = RotateCcw;
+  readonly RemoveIcon = Trash2;
+  readonly CameraIcon = Camera;
+  readonly LoaderIcon = Loader2;
 
   /**
    * Обработчик клика по кнопке удаления фото
